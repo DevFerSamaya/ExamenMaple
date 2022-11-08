@@ -4,14 +4,38 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
-            </div>
-        </div>
-    </div>
 </x-app-layout>
+
+<div class="container">
+
+    <table id="usuarios" class="table table-striped" style="width:100%">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Author</th>
+            <th>Realease date</th>
+            <th>Publish date</th>
+        </tr>
+        </thead>
+    </table>
+
+</div>
+
+<!-- Script -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#usuarios').DataTable({
+            "ajax": "{{route('get.books')}}",
+            "columns":[
+                {data: 'id'},
+                {data: 'title'},
+                {data: 'author'},
+                {data: 'category'},
+                {data: 'realease_date'},
+                {data: 'publish_date'},
+            ]
+        } );
+    });
+</script>

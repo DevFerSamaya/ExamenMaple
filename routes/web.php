@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Route for get data books
+Route::get('/book', [App\Http\Controllers\BooksController::class, 'index'])->name('index.books');
+Route::get('/books-all', [App\Http\Controllers\BooksController::class, 'api'])->name('get.books');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
